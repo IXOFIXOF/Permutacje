@@ -13,7 +13,23 @@ Leks::~Leks()
 
 void Leks::Nastepnik(Permutacja perm)
 {
-
+	
+	int iKoniec = 0;
+    char* pPerm = perm.GetPerm(iKoniec);
+	for (iKoniec; iKoniec >= 0; iKoniec--)
+	{
+		char cuPerm = pPerm[iKoniec];
+		char prPerm = pPerm[iKoniec - 1];
+		int iCurrent = atoi(&cuPerm) + 1;
+		int iPrevious = atoi(&prPerm);
+		if ( iPrevious > iCurrent   )
+		{
+			pPerm[iKoniec] += 1;
+			cout << pPerm << endl;
+			return;
+		}
+	}
+	cout << "Brak nastepnika.\n";
 }
 void Leks::Poprzednik(Permutacja perm)
 {

@@ -4,36 +4,41 @@
 #include "stdafx.h"
 #include "Perm.h"
 
-
+void GetPerm(Permutacja& p);
 void Operacje(Porzadek* p);
 int Wybor();
 int main()
 {
 	cout << "1. Leksykograficzny\n";
 	cout << "2. T.Johnsona\n";
-	cout<< "Wybierz porzadek: ";
-	char wybor;
-	cin>> wybor;
-	Porzadek * p = nullptr;
-	switch (wybor)
+	cout << "Wybierz porzadek: ";
+	unsigned wybor = 0;
+	while (wybor <= 2)
 	{
-	case 1:
-	{
-		p = new Leks();
-		Operacje(p);
-		break;
-	}
-	case 2:
-	{
-		p = new TJohnsona();
-		Operacje(p);
-		break;
-	}
-	default:
-		break;
+		cin >> wybor;
+		Porzadek * p = nullptr;
+		switch (wybor)
+		{
+		case 1:
+		{
+			p = new Leks();
+			Operacje(p);
+			break;
+		}
+		case 2:
+		{
+			p = new TJohnsona();
+			Operacje(p);
+			break;
+		}
+		default:
+			break;
+		}
 	}
 
-    return 0;
+	cin.ignore();
+	cin.get();
+	return 0;
 }
 void Operacje(Porzadek* p)
 {
@@ -43,6 +48,7 @@ void Operacje(Porzadek* p)
 	{
 	case 1:
 	{
+		GetPerm(oPerm);
 		p->Nastepnik(oPerm);
 		break;
 	}
@@ -75,4 +81,10 @@ int Wybor()
 	cin >> n;
 	return n;
 }
-
+void GetPerm(Permutacja& perm)
+{
+	cout << "Podaj permutacje: ";
+	string s;
+	cin >> s;
+	perm.SetPerm(s);
+}

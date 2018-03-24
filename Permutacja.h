@@ -6,10 +6,11 @@ public:
 	Permutacja();
 	~Permutacja();
 	void SetPerm( string perm );
-	string GetPerm();
+	char* GetPerm(int& n);
 
 
 private:
-	string m_perm;
+	char* m_perm;
+	int iLength;
 };
 
