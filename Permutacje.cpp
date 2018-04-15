@@ -43,28 +43,28 @@ int main()
 void Operacje(Porzadek* p)
 {
 	Permutacja oPerm;
+	GetPerm( oPerm );
 	int n = 0, k = 0, x = 0, rank = 0;
 	switch (Wybor())
 	{
 	case 1:
 	{
-		GetPerm(oPerm);
-		p->Nastepnik(oPerm);
+		p->Nastepnik( oPerm );
 		break;
 	}
 	case 2:
 	{
-		p->Poprzednik(oPerm);
+		p->Poprzednik( oPerm );
 		break;
 	}
 	case 3:
 	{
-		p->Rank(oPerm);
+		p->Rank( oPerm );
 		break;
 	}
 	case 4:
 	{
-		p->Perm(rank, n, k);
+		p->Perm( rank, n, k );
 		break;
 	}
 	default:

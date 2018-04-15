@@ -6,11 +6,13 @@ public:
 	Permutacja();
 	~Permutacja();
 	void SetPerm( string perm );
-	char* GetPerm(int& n);
-
-
+	void SetAlphabet(const string& perm);
+	string GetPerm();
+	char operator [](int n);
+	int GetLength();
 private:
-	char* m_perm;
+	string m_perm;
+	int* m_pAlphabet;
 	int iLength;
 };
 

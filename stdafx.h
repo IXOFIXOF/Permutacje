@@ -11,6 +11,7 @@
 #include <tchar.h>
 #include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 // TODO: reference additional headers your program requires here

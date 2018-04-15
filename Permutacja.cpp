@@ -5,7 +5,6 @@
 
 Permutacja::Permutacja()
 {
-	m_perm = nullptr;
 	iLength = 0;
 }
 
@@ -13,14 +12,30 @@ Permutacja::Permutacja()
 Permutacja::~Permutacja()
 {
 }
-char* Permutacja::GetPerm(int& n)
+char Permutacja::operator [](int n)
 {
-	n = iLength - 1;
+	return m_perm[n];
+}
+int Permutacja::GetLength()
+{
+	return iLength;
+}
+void Permutacja::SetAlphabet( const string& perm )
+{
+	m_pAlphabet = new int[perm.length() - 1];
+	for (int iCounter = 0; iCounter < perm.length(); iCounter++)
+	{
+		m_pAlphabet[iCounter] = perm[iCounter];
+	}
+	sort(m_pAlphabet, m_pAlphabet + perm.length());
+}
+string Permutacja::GetPerm()
+{
 	return m_perm;
 }
 void Permutacja::SetPerm( string perm )
 {
-	iLength = perm.length();
-	m_perm = new char[iLength + 1];
-	strcpy(m_perm, perm.c_str());
+	SetAlphabet( perm );
+	iLength = perm.length() - 1;
+	m_perm = perm;
 }

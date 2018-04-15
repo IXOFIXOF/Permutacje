@@ -11,25 +11,51 @@ Leks::~Leks()
 {
 }
 
-void Leks::Nastepnik(Permutacja perm)
+void Leks::Nastepnik( Permutacja perm )
 {
-	
-	int iKoniec = 0;
-    char* pPerm = perm.GetPerm(iKoniec);
-	for (iKoniec; iKoniec >= 0; iKoniec--)
+	string permutacja = perm.GetPerm();
+	int iIndex = perm.GetLength();
+	int iIndex2Change = 0;
+	for (iIndex; iIndex > 0; iIndex--)
 	{
-		char cuPerm = pPerm[iKoniec];
-		char prPerm = pPerm[iKoniec - 1];
-		int iCurrent = atoi(&cuPerm) + 1;
-		int iPrevious = atoi(&prPerm);
-		if ( iPrevious > iCurrent   )
+		if (perm[iIndex - 1] < perm[iIndex])
 		{
-			pPerm[iKoniec] += 1;
-			cout << pPerm << endl;
-			return;
+			break;
 		}
 	}
-	cout << "Brak nastepnika.\n";
+	if ( iIndex == 0 )
+	{
+		cout << "Brak nastepnika.\n";
+	}
+	else
+	{
+		iIndex2Change = iIndex;
+		for (int i = iIndex; i <= perm.GetLength(); i++)
+		{
+			if (perm[i] > perm[iIndex - 1] && perm[i] < perm[iIndex2Change])
+			{
+				iIndex2Change = i;
+			}
+		}
+		char znak;
+		znak = permutacja[iIndex - 1];
+		permutacja[iIndex - 1] = permutacja[iIndex2Change];
+		permutacja[iIndex2Change] = znak;
+		
+
+		int iIndexEnd = perm.GetLength();
+		while (iIndex <= iIndexEnd )
+		{
+			znak = permutacja[iIndex];
+			permutacja[iIndex] = permutacja[iIndexEnd];
+			permutacja[iIndexEnd] = znak;
+			iIndex++;
+			iIndexEnd--;
+		}
+		perm.SetPerm(permutacja);
+		cout << permutacja << endl;
+	}
+
 }
 void Leks::Poprzednik(Permutacja perm)
 {
