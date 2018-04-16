@@ -18,11 +18,11 @@ void TJohnsona::Poprzednik(Permutacja perm)
 {
 
 }
-void TJohnsona::Rank(Permutacja perm)
+int TJohnsona::Rank(Permutacja perm)
 {
-
+	return 0;
 }
-void TJohnsona::Perm(int Rank, int n, int k)
+void TJohnsona::Perm(int Rank, int n, vector<int>& Alphabet)
 {
 
 }

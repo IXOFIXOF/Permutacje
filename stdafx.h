@@ -12,6 +12,9 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
 using namespace std;
 
 // TODO: reference additional headers your program requires here

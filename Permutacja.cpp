@@ -6,28 +6,42 @@
 Permutacja::Permutacja()
 {
 	iLength = 0;
+	m_pAlphabet.clear();
 }
 
 
 Permutacja::~Permutacja()
 {
 }
-char Permutacja::operator [](int n)
+int Permutacja::operator [](int n)
 {
-	return m_perm[n];
+	string perm = m_perm;
+	reverse(perm.begin(), perm.end());
+	int a = atoi(perm.data());
+	int dzielnik = 10;
+	for (int i = 0; i < n; i++)
+	{
+		a = a / dzielnik;
+	}
+	a = a % dzielnik;
+	return a;
 }
 int Permutacja::GetLength()
 {
 	return iLength;
 }
-void Permutacja::SetAlphabet( const string& perm )
+vector<int>& Permutacja::GetAlphabet()
 {
-	m_pAlphabet = new int[perm.length() - 1];
-	for (int iCounter = 0; iCounter < perm.length(); iCounter++)
+	return m_pAlphabet;
+}
+void Permutacja::SetAlphabet( Permutacja perm )
+{
+	for (int iCounter = 0; iCounter <= perm.GetLength(); iCounter++)
 	{
-		m_pAlphabet[iCounter] = perm[iCounter];
+		m_pAlphabet.push_back(perm[iCounter]);
 	}
-	sort(m_pAlphabet, m_pAlphabet + perm.length());
+	sort(m_pAlphabet.begin(), m_pAlphabet.end());
+	
 }
 string Permutacja::GetPerm()
 {
@@ -35,7 +49,7 @@ string Permutacja::GetPerm()
 }
 void Permutacja::SetPerm( string perm )
 {
-	SetAlphabet( perm );
 	iLength = perm.length() - 1;
 	m_perm = perm;
+	SetAlphabet(*this);
 }

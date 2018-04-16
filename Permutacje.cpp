@@ -43,28 +43,44 @@ int main()
 void Operacje(Porzadek* p)
 {
 	Permutacja oPerm;
-	GetPerm( oPerm );
 	int n = 0, k = 0, x = 0, rank = 0;
 	switch (Wybor())
 	{
 	case 1:
 	{
+		GetPerm(oPerm);
 		p->Nastepnik( oPerm );
 		break;
 	}
 	case 2:
 	{
+		GetPerm(oPerm);
 		p->Poprzednik( oPerm );
 		break;
 	}
 	case 3:
 	{
+		GetPerm(oPerm);
 		p->Rank( oPerm );
 		break;
 	}
 	case 4:
 	{
-		p->Perm( rank, n, k );
+		cout << "Podaj alfabet\n";
+		string alfabet;
+		cin >> alfabet;
+		n = alfabet.length();
+		cout << "Podaj liczbe rankingowa\n";
+		cin >> rank;
+		oPerm.SetPerm(alfabet);
+		p->Perm( rank, n, oPerm.GetAlphabet() );
+		vector<int> alf;
+		alf = oPerm.GetAlphabet();
+		for (int licznik = 0; licznik < alfabet.length(); licznik++)
+		{
+			cout << alf[licznik];
+		}
+		cout << endl;
 		break;
 	}
 	default:

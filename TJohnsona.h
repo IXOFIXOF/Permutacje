@@ -11,7 +11,7 @@ public:
 	~TJohnsona();
 	void Nastepnik(Permutacja perm);
 	void Poprzednik(Permutacja perm);
-	void Rank(Permutacja perm);
-	void Perm(int Rank, int n, int k);
+	int Rank(Permutacja perm);
+	void Perm(int Rank, int n, vector<int>& Alphabet);
 };
 

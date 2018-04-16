@@ -6,13 +6,14 @@ public:
 	Permutacja();
 	~Permutacja();
 	void SetPerm( string perm );
-	void SetAlphabet(const string& perm);
+	vector<int>& GetAlphabet();
 	string GetPerm();
-	char operator [](int n);
+	int operator [](int n);
 	int GetLength();
 private:
+	void SetAlphabet(Permutacja perm);
 	string m_perm;
-	int* m_pAlphabet;
+	vector<int> m_pAlphabet;
 	int iLength;
 };
 
